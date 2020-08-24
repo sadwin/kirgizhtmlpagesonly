@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+{% if request.session.lang == None %}
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+  
+    <title>{{ values.0.browser_title }}</title>
+  
+    <!-- Bootstrap core CSS -->
+    <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/vendor/bootstrap/css/style.css" rel="stylesheet">
+  
+  </head>
+  
+  <body>
+  
+    <!-- Navigation -->
+    <div class="container">
+    <header>
+     <nav class="navbar navbar-expand-lg navbar-dark static-top">
+      <div class="container">
+      
+      <div class="logo">
+        <a class="navbar-brand" href="{% url "index" %}"><img src="/static/images/logo.png" class="img-fluid"></a>
+      </div>
+  
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      
+        </button>
+  
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+           <div class="top-header">
+              <form action="{% url 'search' %}" method="get">
+              <ul>
+                  
+                <li class="search_wrapper">
+                  
+                     <button type="submit" class="search_btn" id="search_btn"></button>
+                     <div class="search" id="search">
+                          <input name="q" type="text" required>
+                     </div>
+                     
+                </li>
+                
+                <li><a href="{% url 'tokg' %}">Кырг</a></li>
+                <li><a href="{% url 'toru' %}" class="singin">Рус</a></li>
+              </ul>
+            </form>
+  
+           </div>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url "index" %}">{{ values.0.menu_main_title }}
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url "about" %}">{{ values.0.menu_about_title }}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url "interesting" %}">{{ values.0.menu_interesting_title }}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url "useful" %}">{{ values.0.menu_useful_title }}</a>
+            </li>
+             <li class="nav-item">
+              <a class="nav-link question" href="#">{{ values.0.menu_ask_question_title }}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  
+  
+  </div>
+  
+    <!-- Page Content -->
+    <div class="container">
+      <div class="wrapper">
+  
+  
+           <div class="slider">
+              <div id="demo" class="carousel slide" data-ride="carousel">
+                <ul class="carousel-indicators">
+                  <li data-target="#demo" data-slide-to="0" class="active"></li>
+                  <li data-target="#demo" data-slide-to="1"></li>
+                  <li data-target="#demo" data-slide-to="2"></li>
+                </ul>
+                <div class="carousel-inner">
+  
+                  <div class="carousel-item active">
+                    <img src="{{ values.0.slider_image_1.url }}" width="1100" height="500">
+                    <div class="carousel-caption">
+                      <h3>Хороший школьный день <br><span>начинается</span>  с хорошего</h3>
+                      <p>{{ values.0.slider_additional_info }}</p>
+                    </div>   
+                  </div>
+  
+                  <div class="carousel-item">
+                    <img src="{{ values.0.slider_image_2.url }}" width="1100">
+                    <div class="carousel-caption">
+                      <h3>Хороший школьный день <br><span>начинается</span>  с хорошего</h3>
+                      <p>{{ values.0.slider_additional_info }}</p>
+                    </div>   
+                  </div>
+  
+                  <div class="carousel-item">
+                    <img src="{{ values.0.slider_image_3.url }}" width="1100">
+                    <div class="carousel-caption">
+                      <h3>Хороший школьный день <br><span>начинается</span>  с хорошего</h3>
+                      <p>{{ values.0.slider_additional_info }}</p>
+                    </div>   
+                  </div>
+                
+  
+                </div>
+  
+             </div>
+           </div>
+  
+           <div class="futures">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-6">
+                      <div onclick='window.location.href = "{% url "about" %}"' class="blue-box">
+                        <div class="left-icon"><img src="/static/images/check.png" class="padding-10"></div>
+                        <h4>{{ values.0.additional_menu_about_title }}</h4>
+                     </div>
+                    </div>
+  
+                     <div class="col-lg-3 col-md-6 col-sm-6  col-6">
+                      <div onclick='window.location.href = "{% url "interesting" %}"' class="blue-box">
+                        <div class="left-icon"><img src="/static/images/idea.png" class="padding-10"></div>
+                        <h4>{{ values.0.additional_menu_interesting_title }}</h4>
+                     </div>
+                    </div>
+  
+                     <div class="col-lg-3 col-md-6 col-sm-6  col-6">
+                      <div onclick='window.location.href = "{% url "useful" %}"' class="blue-box">
+                        <div class="left-icon"><img src="/static/images/cooking.png" class="padding-10"></div>
+                        <h4>{{ values.0.additional_menu_useful_title }}</h4>
+                     </div>
+                    </div>
+  
+                     <div class="col-lg-3 col-md-6 col-sm-6  col-6">
+                      <div class="blue-box question">
+                        <div class="left-icon"><img src="/static/images/conversation.png" class="padding-10"></div>
+                        <h4>{{ values.0.additional_menu_ask_title }}</h4>
+                     </div>
+                    </div>
+               </div>
+           </div>
+  
+  
+           <div class="home-content bgHome">
+              <div class="text-center heading"><h3>{{ values.0.segment_after_title }}</h3></div>
+            <div class="row">
+             <div class="col-lg-5 col-md-12 col-sm-12">
+              <img src="{{ values.0.segment_after_image.url }}" class="img-fluid" alt="children">
+             </div>
+  
+              <div class="col-lg-7 col-md-12 col-sm-12 right-section-content">
+                
+                  {{ values.0.segment_after_content|safe }}
+                 <div class="create-btn">
+                   <a href="{{ values.0.segment_after_href_of_button }}">{{ values.0.segment_after_text_on_button }}</a>
+                 </div>
+             </div>
+           </div>
+          </div>
+  
+  
+          <div class="section-two">
+           <div class="row">
+             <div class="col-lg-5 col-md-12 col-sm-12">
+               <div class="grey-section">
+                <h3>Национальная программа школьного питания</h3>
+                <p>Министерство образования и науки Кыргызской Республики и Всемирная продовольственная программа ООН (ВПП ООН) расширят программу горячих школьных обедов в течение следующих пяти лет, чтобы охватить более половины начальных школ страны. Это станет возможным благодаря финансовой...</p>
+  
+                  <div class="create-btn">
+                   <a href="#">Читать</a>
+                 </div>
+  
+                  <div class="horizental-line"><hr></div>
+  
+  
+              <h3>Национальная программа школьного питания</h3>
+                <p>Министерство образования и науки Кыргызской Республики и Всемирная продовольственная программа ООН (ВПП ООН) расширят программу горячих школьных обедов в течение следующих пяти лет, чтобы охватить более половины начальных школ страны. Это станет возможным благодаря финансовой...</p>
+  
+                  <div class="create-btn">
+                   <a href="#">Читать</a>
+                 </div>
+               </div>
+             </div>
+              <div class="col-lg-7 col-md-12 col-sm-12">
+               <div class="right-image-section"><img src="{{ values.0.articles_segment_image.url }}" class="img-fluid"></div>
+             </div>
+           </div><!--end row -->
+         </div><!--end section-two-->
+  
+         <div class="middle text-center">
+           <h3>{{ values.0.last_public_segment_title }}</h3>
+         </div>
+  
+  
+        <div class="section-two padding-remove">
+  
+           <div class="row">
+             <div class="col-lg-4 col-md-12 col-sm-12 publication">
+               <div class="grey-section padding-none">
+                  <img src="/static/images/girl-left-img.png" class="img-fluid">
+                  <div class="inner-area">
+                <h3 class="title-top-space">«Просто о школьном питании»</h3>
+                 <div class="horizental-line"><hr class="line-space"></div>
+                <p>Справочная информация о том, как должно быть организовано школьное питание:</p>
+  
+                 <ul class="list">
+                   <li>-  примерное меню и рацион школьника;</li>
+                   <li>-  обязанности поваров и директора школы в </li>
+                   <li>-  отношении организации питания;</li>
+                   <li>-  оборудование столовой и пищеблока;</li>
+                 </ul>
+  
+                  <div class="create-btn">
+                     <a href="#">Читать</a>
+                  </div>
+                </div>
+               </div>
+             </div>
+  
+  
+              <div class="col-lg-4 col-md-12 col-sm-12 publication">
+               <div class="grey-section  padding-none">
+                <div class="blue-header">
+                   <h3>{{ values.0.last_public_middle_card_title }}</h3>
+                </div>
+                 <div class="inner-area">
+  
+                    {{ values.0.last_public_middle_card_content|safe }}
+  
+                  <div class="create-btn">
+                   <a href="#">{{ values.0.last_public_middle_card_button_title }}</a>
+                 </div>
+  
+               </div>
+               </div>
+             </div>
+  
+               <div class="col-lg-4 col-md-12 col-sm-12 publication">
+               <div class="grey-section padding-none">
+                  <img src="/static/images/boy-right-img.png" class="img-fluid">
+                  <div class="inner-area">
+                <h3 class="title-top-space">«Просто о школьном питании»</h3>
+                 <div class="horizental-line"><hr class="line-space"></div>
+                <p>Справочная информация о том, как должно быть организовано школьное питание:</p>
+  
+                 <ul class="list">
+                   <li>-  примерное меню и рацион школьника;</li>
+                   <li>-  обязанности поваров и директора школы в </li>
+                   <li>-  отношении организации питания;</li>
+                   <li>-  оборудование столовой и пищеблока;</li>
+                 </ul>
+  
+                  <div class="create-btn">
+                     <a href="#">Читать</a>
+                  </div>
+                </div>
+               </div>
+             </div>
+           </div><!--end row -->
+  
+  
+  
+             <div class="row row-space">
+  
+             <div class="col-lg-4 col-md-12 col-sm-12">
+               <div class="grey-section  padding-none">
+                <div class="blue-header text-center">
+                   <h3>{{ values.0.news_left_card_title }}</h3>
+                </div>
+                 <div class="inner-area">
+  
+                  <small>18.09.19</small><br>
+                  <span>новости В мире</span>
+                  <h5>Равноправие в школьных столовых: обеды стали одинаковыми для всех.</h5>
+                  <p>Все категории учеников теперь будут получать в школьных столовых одинаковые обеды...</p>
+                  <div class="horizental-line"><hr></div>
+  
+                   <small>18.09.19</small><br>
+                  <span>новости В мире</span>
+                  <h5>Равноправие в школьных столовых: обеды стали одинаковыми для всех.</h5>
+                  <p>Все категории учеников теперь будут получать в школьных столовых одинаковые обеды...</p>
+                  <div class="horizental-line"><hr></div>
+  
+  
+                   <small>18.09.19</small><br>
+                  <span>новости В мире</span>
+                  <h5>Равноправие в школьных столовых: обеды стали одинаковыми для всех.</h5>
+                  <p>Все категории учеников теперь будут получать в школьных столовых одинаковые обеды...</p>
+               </div>
+               </div>
+             </div>
+  
+             <div class="col-lg-4 col-md-12 col-sm-12">
+               <div class="grey-section tasteful">
+                  <img src="{{ values.0.news_middle_image.url }}" class="img-fluid kids-img">
+               </div>
+             </div>
+  
+               <div class="col-lg-4 col-md-12 col-sm-12">
+               <div class="grey-section padding-none tasteful">
+                  <div class="inner-area">
+                      {{ values.0.news_right_card_content|safe }}
+                   <div class="create-btn">
+                     <a href="{{ values.0.news_right_card_href_of_button }}">{{ values.0.news_right_card_button_text }}</a>
+                  </div>
+                </div>
+               </div>
+             </div>
+           </div><!--end row -->
+         </div><!--end section-two-->
+  
+         
+         <div class="bottom-section text-center">
+           <h2>Рассылка</h2>
+           <p>«Оптимизации программы школьного питания в КР»</p>
+            <form method="POST">
+              {% csrf_token %}
+                 <div class="subscribe-fields">
+                    <div class="row">
+                        <div class="col-8">
+                          <input type="email" class="form-control" placeholder="Введите свой email" name="email"/>
+                        </div>
+                        <div class="col-4">
+                          <button type="submit" name="btnform2" class="searchBtn">подписаться</button>
+                        </div>
+                    </div>
+                 </div>
+             <!--    <div class="clearfix"></div> -->
+            </form>
+           <div class="social-meddia">
+              <ul>
+                <li><img src="/static/images/insta.png"></li>
+                <li><img src="/static/images/fb.png"></li>
+                 <li><img src="/static/images/telegram.png"></li>
+                 <li><img src="/static/images/twitter.png"></li>
+                 <li><img src="/static/images/odono.png"></li>
+              </ul>
+           </div>
+        </div>
+  
+        <div class="row row-space">
+          <div class="col-4 text-center sponsor-logo">
+               <img src="/static/images/footer-logo 1.png">
+               <h4 class="tbo">Министерство Образования</h4>  
+          </div>
+           <div class="col-4 text-center sponsor-logo">
+               <img src="/static/images/footer-logo 2.png">
+               <h4 class="tbo">Министерство Образования</h4>  
+          </div>
+  
+           <div class="col-4 text-center sponsor-logo">
+               <img src="/static/images/footer-logo 3.png">
+               <h4 class="tbo">Министерство Образования</h4>  
+          </div>
+        </div>
+  
+        <footer>
+          <div class="row">
+            <div class="col-md-9">
+           <div class="row">
+             <div class="col-md-3">
+                <h3><a href="{% url "about" %}">О проекте</a></h3>
+                <ul class="footer-list footer-menu">
+                  <li><a href="/">О портале</a></li>
+                  <li><a href="/">О НПШП</a></li>
+                  <li><a href="/">О программе ВПП</a></li>
+                </ul>
+             </div>
+  
+              <div class="col-md-3">
+                <h3><a href="{% url "useful" %}">Полезно</a></h3>
+                <ul class="footer-list footer-menu">
+                  <li><a href="/">Вы имеете право</a></li>
+                  <li><a href="/">Просто о ШП</a></li>
+                  <li><a href="/">Что делать?</a></li>
+                </ul>
+             </div>
+  
+              <div class="col-md-3">
+                <h3><a href="{% url "interesting" %}">Интересно</a></h3>
+                <ul class="footer-list footer-menu">
+                  <li><a href="#">Новости</a></li>
+                  <li><a href="/">В фокусе</a></li>
+                  <li><a href="/">Советуем</a></li>
+                </ul>
+             </div>
+  
+              <div class="col-md-3">
+                 <h3><a href="/">Готовим сами</a></h3>
+                <ul class="footer-list footer-menu">
+                  <li><a href="/">А вы знали?</a></li>
+                  <li><a href="/">Играем</a></li>
+                  <li><a href="/">Советуем</a></li>
+                </ul>
+             </div>
+           </div>
+         </div>
+         <div class="col-md-3">
+            <ul class="footer-list client-info">
+                <li><span class="ph">+996 (555) 12 31 23</span></li>
+                <li><span class="location">ул. Васильева 35/2</span></li>
+                <li><span class="message">email:  likjuvhmj.com</span></li>
+            </ul>
+         </div>
+         </div>
+        </footer>
+  
+  
+        <div class="row row-space copyright">
+          <div class="col-md-6 tex-left">
+            <p>© Оптимизации программы школьного питания в КР» 2019 </p>
+          </div>
+          
+           <div class="col-md-6 text-right">
+            <p>Разработано: Colibri Studio </p>
+          </div>
+  
+  
+        </div>
+  
+  
+  
+  
+      </div>
+    </div>
+  
+    <div class="popup-overlay">
+       <div class="popup">
+           <button class="close-popup"></button>
+           <h3>Задать вопрос</h3>
+           
+           <form method="POST">
+              {% csrf_token %}
+               <div class="form-group">
+                  <label>Имя</label>
+                  <input name="name" id="name" type="text" class="form-control">
+               </div>
+               <div class="form-group">
+                  <label>E-mail</label>
+                  <input name="email" id="email" type="email" class="form-control">
+               </div>
+               <div class="form-group">
+                  <label>Телефон</label>
+                  <input name="phone" id="phone" type="phone" class="form-control">
+               </div>
+               <div class="form-group">
+                  <label>Вопрос</label>
+                  <textarea name="content" id="content" class="form-control" rows="6"></textarea>
+               </div>
+               <button type="submit" name="btnform1" class="btn btn-primary">Отправить</button>
+           </form>
+       </div>
+    </div>
+  
+    <button class="anhor"></button>
+  
+    <!-- Bootstrap core JavaScript -->
+    <script src="/static/vendor/jquery/jquery.slim.min.js"></script>
+    <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/vendor/jquery/jquery.min.js"></script>
+    <script src="/static/vendor/jquery/main.js"></script>
+  
+  
+  </body>
+
+  {% else %}
+
+
+
+  <head>
+
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="description" content="">
+      <meta name="author" content="">
+    
+      <title>{{ values.0.browser_title_kirgiz }}</title>
+    
+      <!-- Bootstrap core CSS -->
+      <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+      <link href="/static/vendor/bootstrap/css/style.css" rel="stylesheet">
+    
+    </head>
+    
+    <body>
+    
+      <!-- Navigation -->
+      <div class="container">
+      <header>
+       <nav class="navbar navbar-expand-lg navbar-dark static-top">
+        <div class="container">
+        
+        <div class="logo">
+          <a class="navbar-brand" href="{% url "index" %}"><img src="/static/images/logo.png" class="img-fluid"></a>
+        </div>
+    
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        
+          </button>
+    
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+             <div class="top-header">
+                <form action="{% url 'search' %}" method="get">
+                <ul>
+                    
+                  <li class="search_wrapper">
+                    
+                       <button type="submit" class="search_btn" id="search_btn"></button>
+                       <div class="search" id="search">
+                            <input name="q" type="text" required>
+                       </div>
+                       
+                  </li>
+                  
+                  <li><a href="{% url 'tokg' %}" class="singin">Кырг</a></li>
+                  <li><a href="{% url 'toru' %}">Рус</a></li>
+                </ul>
+              </form>
+    
+             </div>
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="{% url "index" %}">{{ values.0.menu_main_title_kirgiz }}
+                  <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url "about" %}">{{ values.0.menu_about_title_kirgiz }}</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url "interesting" %}">{{ values.0.menu_interesting_title_kirgiz }}</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url "useful" %}">{{ values.0.menu_useful_title_kirgiz }}</a>
+              </li>
+               <li class="nav-item">
+                <a class="nav-link question" href="#">{{ values.0.menu_ask_question_title_kirgiz }}</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    
+    
+    </div>
+    
+      <!-- Page Content -->
+      <div class="container">
+        <div class="wrapper">
+    
+    
+             <div class="slider">
+                <div id="demo" class="carousel slide" data-ride="carousel">
+                  <ul class="carousel-indicators">
+                    <li data-target="#demo" data-slide-to="0" class="active"></li>
+                    <li data-target="#demo" data-slide-to="1"></li>
+                    <li data-target="#demo" data-slide-to="2"></li>
+                  </ul>
+                  <div class="carousel-inner">
+    
+                    <div class="carousel-item active">
+                      <img src="{{ values.0.slider_image_1.url }}" width="1100" height="500">
+                      <div class="carousel-caption">
+                        <h3>Жакшы мектеп күнү<br><span>жакшылык</span>  менен башталат</h3>
+                        <p>{{ values.0.slider_additional_info_kirgiz }}</p>
+                      </div>   
+                    </div>
+    
+                    <div class="carousel-item">
+                      <img src="{{ values.0.slider_image_2.url }}" width="1100">
+                      <div class="carousel-caption">
+                          <h3>Жакшы мектеп күнү<br><span>жакшылык</span>  менен башталат</h3>
+                        <p>{{ values.0.slider_additional_info_kirgiz }}</p>
+                      </div>   
+                    </div>
+    
+                    <div class="carousel-item">
+                      <img src="{{ values.0.slider_image_3.url }}" width="1100">
+                      <div class="carousel-caption">
+                          <h3>Жакшы мектеп күнү<br><span>жакшылык</span>  менен башталат</h3>
+                        <p>{{ values.0.slider_additional_info_kirgiz }}</p>
+                      </div>   
+                    </div>
+                  
+    
+                  </div>
+    
+               </div>
+             </div>
+    
+             <div class="futures">
+                  <div class="row">
+                      <div class="col-lg-3 col-md-6 col-sm-6 col-6">
+                        <div onclick='window.location.href = "{% url "about" %}"' class="blue-box">
+                          <div class="left-icon"><img src="/static/images/check.png" class="padding-10"></div>
+                          <h4>{{ values.0.additional_menu_about_title_kirgiz }}</h4>
+                       </div>
+                      </div>
+    
+                       <div class="col-lg-3 col-md-6 col-sm-6  col-6">
+                        <div onclick='window.location.href = "{% url "interesting" %}"' class="blue-box">
+                          <div class="left-icon"><img src="/static/images/idea.png" class="padding-10"></div>
+                          <h4>{{ values.0.additional_menu_interesting_title_kirgiz }}</h4>
+                       </div>
+                      </div>
+    
+                       <div class="col-lg-3 col-md-6 col-sm-6  col-6">
+                        <div onclick='window.location.href = "{% url "useful" %}"' class="blue-box">
+                          <div class="left-icon"><img src="/static/images/cooking.png" class="padding-10"></div>
+                          <h4>{{ values.0.additional_menu_useful_title_kirgiz }}</h4>
+                       </div>
+                      </div>
+    
+                       <div class="col-lg-3 col-md-6 col-sm-6  col-6">
+                        <div class="blue-box question">
+                          <div class="left-icon"><img src="/static/images/conversation.png" class="padding-10"></div>
+                          <h4>{{ values.0.additional_menu_ask_title_kirgiz }}</h4>
+                       </div>
+                      </div>
+                 </div>
+             </div>
+    
+    
+             <div class="home-content bgHome">
+                <div class="text-center heading"><h3>{{ values.0.segment_after_title_kirgiz }}</h3></div>
+              <div class="row">
+               <div class="col-lg-5 col-md-12 col-sm-12">
+                <img src="{{ values.0.segment_after_image.url }}" class="img-fluid" alt="children">
+               </div>
+    
+                <div class="col-lg-7 col-md-12 col-sm-12 right-section-content">
+                  
+                    {{ values.0.segment_after_content_kirgiz|safe }}
+                   <div class="create-btn">
+                     <a href="{{ values.0.segment_after_href_of_button }}">{{ values.0.segment_after_text_on_button_kirgiz }}</a>
+                   </div>
+               </div>
+             </div>
+            </div>
+    
+    
+            <div class="section-two">
+             <div class="row">
+               <div class="col-lg-5 col-md-12 col-sm-12">
+                 <div class="grey-section">
+                  <h3>Национальная программа школьного питания</h3>
+                  <p>Министерство образования и науки Кыргызской Республики и Всемирная продовольственная программа ООН (ВПП ООН) расширят программу горячих школьных обедов в течение следующих пяти лет, чтобы охватить более половины начальных школ страны. Это станет возможным благодаря финансовой...</p>
+    
+                    <div class="create-btn">
+                     <a href="#">Читать</a>
+                   </div>
+    
+                    <div class="horizental-line"><hr></div>
+    
+    
+                <h3>Национальная программа школьного питания</h3>
+                  <p>Министерство образования и науки Кыргызской Республики и Всемирная продовольственная программа ООН (ВПП ООН) расширят программу горячих школьных обедов в течение следующих пяти лет, чтобы охватить более половины начальных школ страны. Это станет возможным благодаря финансовой...</p>
+    
+                    <div class="create-btn">
+                     <a href="#">Читать</a>
+                   </div>
+                 </div>
+               </div>
+                <div class="col-lg-7 col-md-12 col-sm-12">
+                 <div class="right-image-section"><img src="{{ values.0.articles_segment_image.url }}" class="img-fluid"></div>
+               </div>
+             </div><!--end row -->
+           </div><!--end section-two-->
+    
+           <div class="middle text-center">
+             <h3>{{ values.0.last_public_segment_title_kirgiz }}</h3>
+           </div>
+    
+    
+          <div class="section-two padding-remove">
+    
+             <div class="row">
+               <div class="col-lg-4 col-md-12 col-sm-12 publication">
+                 <div class="grey-section padding-none">
+                    <img src="/static/images/girl-left-img.png" class="img-fluid">
+                    <div class="inner-area">
+                  <h3 class="title-top-space">«Просто о школьном питании»</h3>
+                   <div class="horizental-line"><hr class="line-space"></div>
+                  <p>Справочная информация о том, как должно быть организовано школьное питание:</p>
+    
+                   <ul class="list">
+                     <li>-  примерное меню и рацион школьника;</li>
+                     <li>-  обязанности поваров и директора школы в </li>
+                     <li>-  отношении организации питания;</li>
+                     <li>-  оборудование столовой и пищеблока;</li>
+                   </ul>
+    
+                    <div class="create-btn">
+                       <a href="#">Читать</a>
+                    </div>
+                  </div>
+                 </div>
+               </div>
+    
+    
+                <div class="col-lg-4 col-md-12 col-sm-12 publication">
+                 <div class="grey-section  padding-none">
+                  <div class="blue-header">
+                     <h3>{{ values.0.last_public_middle_card_title_kirgiz }}</h3>
+                  </div>
+                   <div class="inner-area">
+    
+                      {{ values.0.last_public_middle_card_content_kirgiz|safe }}
+    
+                    <div class="create-btn">
+                     <a href="#">{{ values.0.last_public_middle_card_button_title_kirgiz }}</a>
+                   </div>
+    
+                 </div>
+                 </div>
+               </div>
+    
+                 <div class="col-lg-4 col-md-12 col-sm-12 publication">
+                 <div class="grey-section padding-none">
+                    <img src="/static/images/boy-right-img.png" class="img-fluid">
+                    <div class="inner-area">
+                  <h3 class="title-top-space">«Просто о школьном питании»</h3>
+                   <div class="horizental-line"><hr class="line-space"></div>
+                  <p>Справочная информация о том, как должно быть организовано школьное питание:</p>
+    
+                   <ul class="list">
+                     <li>-  примерное меню и рацион школьника;</li>
+                     <li>-  обязанности поваров и директора школы в </li>
+                     <li>-  отношении организации питания;</li>
+                     <li>-  оборудование столовой и пищеблока;</li>
+                   </ul>
+    
+                    <div class="create-btn">
+                       <a href="#">Читать</a>
+                    </div>
+                  </div>
+                 </div>
+               </div>
+             </div><!--end row -->
+    
+    
+    
+               <div class="row row-space">
+    
+               <div class="col-lg-4 col-md-12 col-sm-12">
+                 <div class="grey-section  padding-none">
+                  <div class="blue-header text-center">
+                     <h3>{{ values.0.news_left_card_title_kirgiz }}</h3>
+                  </div>
+                   <div class="inner-area">
+    
+                    <small>18.09.19</small><br>
+                    <span>новости В мире</span>
+                    <h5>Равноправие в школьных столовых: обеды стали одинаковыми для всех.</h5>
+                    <p>Все категории учеников теперь будут получать в школьных столовых одинаковые обеды...</p>
+                    <div class="horizental-line"><hr></div>
+    
+                     <small>18.09.19</small><br>
+                    <span>новости В мире</span>
+                    <h5>Равноправие в школьных столовых: обеды стали одинаковыми для всех.</h5>
+                    <p>Все категории учеников теперь будут получать в школьных столовых одинаковые обеды...</p>
+                    <div class="horizental-line"><hr></div>
+    
+    
+                     <small>18.09.19</small><br>
+                    <span>новости В мире</span>
+                    <h5>Равноправие в школьных столовых: обеды стали одинаковыми для всех.</h5>
+                    <p>Все категории учеников теперь будут получать в школьных столовых одинаковые обеды...</p>
+                 </div>
+                 </div>
+               </div>
+    
+               <div class="col-lg-4 col-md-12 col-sm-12">
+                 <div class="grey-section tasteful">
+                    <img src="{{ values.0.news_middle_image.url }}" class="img-fluid kids-img">
+                 </div>
+               </div>
+    
+                 <div class="col-lg-4 col-md-12 col-sm-12">
+                 <div class="grey-section padding-none tasteful">
+                    <div class="inner-area">
+                        {{ values.0.news_right_card_content_kirgiz|safe }}
+                     <div class="create-btn">
+                       <a href="{{ values.0.news_right_card_href_of_button }}">{{ values.0.news_right_card_button_text_kirgiz }}</a>
+                    </div>
+                  </div>
+                 </div>
+               </div>
+             </div><!--end row -->
+           </div><!--end section-two-->
+    
+           
+           <div class="bottom-section text-center">
+             <h2>Рассылка</h2>
+             <p>«Оптимизации программы школьного питания в КР»</p>
+              <form method="POST">
+                {% csrf_token %}
+                   <div class="subscribe-fields">
+                      <div class="row">
+                          <div class="col-8">
+                            <input type="email" class="form-control" placeholder="Введите свой email" name="email"/>
+                          </div>
+                          <div class="col-4">
+                            <button type="submit" name="btnform2" class="searchBtn">подписаться</button>
+                          </div>
+                      </div>
+                   </div>
+               <!--    <div class="clearfix"></div> -->
+              </form>
+             <div class="social-meddia">
+                <ul>
+                  <li><img src="/static/images/insta.png"></li>
+                  <li><img src="/static/images/fb.png"></li>
+                   <li><img src="/static/images/telegram.png"></li>
+                   <li><img src="/static/images/twitter.png"></li>
+                   <li><img src="/static/images/odono.png"></li>
+                </ul>
+             </div>
+          </div>
+    
+          <div class="row row-space">
+            <div class="col-4 text-center sponsor-logo">
+                 <img src="/static/images/footer-logo 1.png">
+                 <h4 class="tbo">Министерство Образования</h4>  
+            </div>
+             <div class="col-4 text-center sponsor-logo">
+                 <img src="/static/images/footer-logo 2.png">
+                 <h4 class="tbo">Министерство Образования</h4>  
+            </div>
+    
+             <div class="col-4 text-center sponsor-logo">
+                 <img src="/static/images/footer-logo 3.png">
+                 <h4 class="tbo">Министерство Образования</h4>  
+            </div>
+          </div>
+    
+          <footer>
+            <div class="row">
+              <div class="col-md-9">
+             <div class="row">
+               <div class="col-md-3">
+                  <h3><a href="{% url "about" %}">О проекте</a></h3>
+                  <ul class="footer-list footer-menu">
+                    <li><a href="/">О портале</a></li>
+                    <li><a href="/">О НПШП</a></li>
+                    <li><a href="/">О программе ВПП</a></li>
+                  </ul>
+               </div>
+    
+                <div class="col-md-3">
+                  <h3><a href="{% url "useful" %}">Полезно</a></h3>
+                  <ul class="footer-list footer-menu">
+                    <li><a href="/">Вы имеете право</a></li>
+                    <li><a href="/">Просто о ШП</a></li>
+                    <li><a href="/">Что делать?</a></li>
+                  </ul>
+               </div>
+    
+                <div class="col-md-3">
+                  <h3><a href="{% url "interesting" %}">Интересно</a></h3>
+                  <ul class="footer-list footer-menu">
+                    <li><a href="#">Новости</a></li>
+                    <li><a href="/">В фокусе</a></li>
+                    <li><a href="/">Советуем</a></li>
+                  </ul>
+               </div>
+    
+                <div class="col-md-3">
+                   <h3><a href="/">Готовим сами</a></h3>
+                  <ul class="footer-list footer-menu">
+                    <li><a href="/">А вы знали?</a></li>
+                    <li><a href="/">Играем</a></li>
+                    <li><a href="/">Советуем</a></li>
+                  </ul>
+               </div>
+             </div>
+           </div>
+           <div class="col-md-3">
+              <ul class="footer-list client-info">
+                  <li><span class="ph">+996 (555) 12 31 23</span></li>
+                  <li><span class="location">ул. Васильева 35/2</span></li>
+                  <li><span class="message">email:  likjuvhmj.com</span></li>
+              </ul>
+           </div>
+           </div>
+          </footer>
+    
+    
+          <div class="row row-space copyright">
+            <div class="col-md-6 tex-left">
+              <p>© Оптимизации программы школьного питания в КР» 2019 </p>
+            </div>
+            
+             <div class="col-md-6 text-right">
+              <p>Разработано: Colibri Studio </p>
+            </div>
+    
+    
+          </div>
+    
+    
+    
+    
+        </div>
+      </div>
+    
+      <div class="popup-overlay">
+         <div class="popup">
+             <button class="close-popup"></button>
+             <h3>Задать вопрос</h3>
+             
+             <form method="POST">
+                {% csrf_token %}
+                 <div class="form-group">
+                    <label>Имя</label>
+                    <input name="name" id="name" type="text" class="form-control">
+                 </div>
+                 <div class="form-group">
+                    <label>E-mail</label>
+                    <input name="email" id="email" type="email" class="form-control">
+                 </div>
+                 <div class="form-group">
+                    <label>Телефон</label>
+                    <input name="phone" id="phone" type="phone" class="form-control">
+                 </div>
+                 <div class="form-group">
+                    <label>Вопрос</label>
+                    <textarea name="content" id="content" class="form-control" rows="6"></textarea>
+                 </div>
+                 <button type="submit" name="btnform1" class="btn btn-primary">Отправить</button>
+             </form>
+         </div>
+      </div>
+    
+      <button class="anhor"></button>
+    
+      <!-- Bootstrap core JavaScript -->
+      <script src="/static/vendor/jquery/jquery.slim.min.js"></script>
+      <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+      <script src="/static/vendor/jquery/jquery.min.js"></script>
+      <script src="/static/vendor/jquery/main.js"></script>
+    
+    
+    </body>
+
+    {% endif %}
+
+</html>
