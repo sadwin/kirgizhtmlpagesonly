@@ -1,2 +1,2 @@
 # kirgizhtmlpagesonly
-# Resume Maksim Selin van Vinkeveen
+# Resume Maksim Selin van Mijdrecht
